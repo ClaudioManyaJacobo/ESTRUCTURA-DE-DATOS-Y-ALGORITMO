@@ -13,7 +13,29 @@ class Categoria:
         """
         self.cod_categoria = cod_categoria
         self.categoria = categoria
+        
+    @classmethod
+    def obtener_categorias(cls):
+        datos_categorias = [
+            ('B101', 'Ficción'),
+            ('B102', 'No Ficción'),
+            ('B103', 'Literatura infantil y juvenil'),
+            ('B104', 'Referencia'),
+            ('B105', 'Educación'),
+            ('B106', 'Artes y Entretenimiento'),
+            ('B107', 'Cocina y Gastronomía'),
+            ('B108', 'Viajes'),
+            ('B109', 'Ciencia y Tecnología'),
+            ('B110', 'Autoayuda y Desarrollo personal')
+        ]
 
+        categorias = []
+        for cod, cat in datos_categorias:
+            categoria = Categoria(cod, cat)
+            categorias.append(categoria)
+
+        return categorias
+    
     @staticmethod
     def mostrar_libros_por_categoria(cod_categoria):
         """
