@@ -1,4 +1,6 @@
-from EXAMEN_P3 import Persona
+from Libro import Libro
+from Autor import Autor
+from Categoria import Categoria
 import shutil
 import datetime
 import os
@@ -24,12 +26,13 @@ class Mantenimiento:
             fecha_actual = datetime.datetime.now()
             fecha_formateada = fecha_actual.strftime("%Y%m%d_%H%M%S")
             nombre_archivo_respaldo = f"respaldo_libros_{fecha_formateada}.txt"
-            shutil.copy("REPORTE_LIBROS.txt")
+            shutil.copy("REPORTE_LIBROS.txt", nombre_archivo_respaldo)
             print(f"Se ha creado un respaldo del archivo 'REPORTE_LIBROS.txt' como '{nombre_archivo_respaldo}'.")
         except Exception as e:
             mensaje = f"Error al crear el respaldo: {str(e)}"
             print(mensaje)
-            self.agregar_error(mensaje)
+            Mantenimiento.agregar_error(mensaje)
+
 
     @staticmethod
     def vaciar_archivo():
@@ -40,7 +43,7 @@ class Mantenimiento:
         except Exception as e:
             mensaje = f"Error al vaciar el archivo: {str(e)}"
             print(mensaje)
-            self.agregar_error(mensaje)
+            Mantenimiento.agregar_error(mensaje)
 
 def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
